@@ -177,6 +177,7 @@ main {
     text-align: center;
     display: block;
     margin: 0.5rem auto;
+    color: var(--color-primary);
     
   }
   
