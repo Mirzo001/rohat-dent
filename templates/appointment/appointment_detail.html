@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid m-5 p-5">
+        <div class="card" >
+          <div class="card-body">
+                <h5 class="card-title col4">Qabul haqida ma'lumot:</h5>
+              <h1 class="card-title col4">{{ object.patient }}</h1>
+              <p class="card-text"><strong> Vaqti:</strong> {{ object.date }} {{ object.time }}</p>
+              <p class="card-text"><strong>Ko'rik holati:</strong>  <mark>{{ object.status }}</mark></p>
+              <p class="card-text"> <strong> Diagnoz:</strong> <em> {{ object.patient.diagnoz }}</em></p>
+              <p class="card-text"> <strong> Qaydlar:</strong> <em> {{ object.qaydlar }}</em></p>
+
+              <a href="{% url 'appointment_edit' appointment.id %}" class="btn btn-secondary" role="button"><i class="fa-solid fa-pen-to-square"></i>O'zgartirish</a>
+              <a href="{% url 'appointment_delete' appointment.id %}" class="btn btn-danger" role="button"><i class="fa-solid fa-trash-can"></i> O'chirish</a>
+
+        </div>
+        </div>
+        <p></p>
+    </div>
+
+
+{% endblock content %}

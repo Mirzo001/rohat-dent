@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="d-flex justify-content-center m-5 p-5">
+    <div class="col-auto">
+        <h1 class="display-6 text-center"> <i class="fa-solid fa-hospital-user"></i> Yangi bemor qo'shish</h1>
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="hidden" name="doctor" value="{{ request.user.id }}">
+            <button class="btn btn-success ml-2" type="submit">Saqlash</button>
+
+        </form>
+        <br>
+    </div>
+</div>
+{% endblock content %}
+

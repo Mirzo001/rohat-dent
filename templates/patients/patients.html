@@ -1,0 +1,67 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+
+
+  
+      {% block content %}
+      <main>
+        <h1>Dashboard</h1>
+        
+        {% comment %}
+        <div class="data">
+          <input type="date" />
+        </div>
+        {% endcomment %}
+          
+      
+      
+      
+        <!-- END OF INSIGHTS -->
+      
+        <div class="middle">
+          <div class="recent-orders">
+            <h2>Bemorlar ro'yxati</h2>
+      
+      {% comment %}
+      <div>
+        <form method="get">
+          <input type="search" id="tags" placeholder="Patient name" name="q">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      {% endcomment %}
+        
+           
+          <div class="wrapper">
+            <div class="search_box">
+              <form 
+              hx-get="{% url 'patient_search' %}" 
+              hx-target="#patient" 
+              hx-trigger="submit, input delay:0.3s">
+        
+              <input type="text" name="search" class="input_search" placeholder="Qidirish..." value="{{ search }}">
+              </form>
+             </div>
+          </div>
+          <br>
+
+            
+
+        <div id="patient">
+          {% include "patients/patient_search.html" %}
+        </div>
+      
+           
+          </div>
+        </div>
+      </main>
+      
+      <script type="text/javascript" src="{% static 'js/htmx.min.js' %}"></script>
+      <script>
+        document.body.addEventListener('htmx:configRequest', (event) => {
+          event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        })
+      </script>
+      {% endblock content %}
+
+     

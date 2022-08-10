@@ -1,0 +1,74 @@
+<table>
+        
+    <thead>
+      <tr>
+        <th><i class="fa-solid fa-bars-staggered"></i></th>
+        <th><i class="fa-solid fa-calendar-day"></i> Sana</th>
+        <th><i class="fa-solid fa-clock"></i> Vaqt</th>
+        <th><i class="fa-solid fa-teeth"></i> Bemor</th>
+        <th><i class="fa-solid fa-stethoscope"></i> Diagnoz</th>
+        
+        <th><i class="fa-solid fa-spinner"></i> Status</th>
+        <th><span class="material-icons-outlined">
+          app_registration
+          </span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in time %}
+      <tr>
+        <td>{{ t.time|date:"H:i" }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      
+      {% for app in appointment %}
+      {% if app.time|date:"H" == t.time|date:"H" %}
+      {% if app.date == today %}         
+      <tr >
+        
+        <th></th>
+        <td><a href="{% url 'appointment_detail' app.pk  %}">{{ app.date |date:"D, d M, Y" }}</a></td>
+        <td><a href="{% url 'appointment_detail' app.pk  %}">{{ app.time |date:"H:i" }}</a></td>
+        <td >{{ app.patient }}</td>
+        <td>{{ app.patient.diagnoz }}</td>
+        {% if app.status == "Kutilmoqda" %}
+        <td class="warning">{{ app.status }}</td>
+        {% elif app.status == "Yakunlandi" %}
+        <td class="success">{{ app.status }}</td>
+        {% elif app.status == "Bekor qilindi" %}
+        <td class="danger">{{ app.status }}</td>
+        {% endif %}
+        <td>  <form method="post" action="{% url 'status_edit' app.pk %}">{% csrf_token %}<select id="status" style="background-color:transparent; width: 30px;" name="status">
+          <option selected>-🔽-</option>
+          <option value="Yakunlandi">-🟢- </option>
+          <option value="Kutilmoqda">-🟡-</option>
+          <option value="Bekor qilindi">-🔴-</option>
+        
+
+          
+      </select> <button type="submit"  style="background-color: transparent;"><i class="fa-solid fa-pen-to-square"></i></button></form></td>
+      <td>
+        
+      </td>
+        {% endif %}
+
+        {% endif %}
+    
+        {% comment %}
+        <td>{{ app.doctor }}</td>
+        {% endcomment %}
+          
+       
+       
+        {%endfor%}
+        {% endfor %}
+  
+      </tr>
+   
+    </tbody>
+  </table>

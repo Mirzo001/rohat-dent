@@ -1,0 +1,526 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bosh sahifa{% endblock title %}
+
+{% block content %}
+
+    
+    
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="static/home/images/favicon.png" type="">
+
+  <title> ROHAT DENT </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'home/css/style1.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'home/css/responsive.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="hero_area">
+  
+    <div class="hero_bg_box">
+      <img src="{% static 'home/images/hero-bg.png' %}" alt="">
+    </div>
+
+    <!-- header section strats -->
+    
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                        Chiroy kulishdan boshlanadi!
+                    </h1>
+                    <p>
+                        Sizning tishingiz sog'lom bo'lishi uchun bizda professional shifokorlar yordamga tayyor.tishlarni tashxislash va davolash sohasida yuqori sifatli stomatologik xizmatlarni taqdim etadi.                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Davomi
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      Go'zallik kaliti bu - sog'lom tishlar
+                    </h1>
+                    <p>
+                        Yaqinda bizning stomatologiyamiz chiroyli tabassumni tiklashda kerakli va og'riqsiz yordam ko'rsatadigan tajribali tish shifokorlarini birlashtirdi.                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Davomi
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      Mukammal tishlar, jozibali sog'liq!
+                    </h1>
+                    <p>
+                        Yaqinda bizning stomatologiyamiz chiroyli tabassumni tiklashda kerakli va og'riqsiz yordam ko'rsatadigan tajribali tish shifokorlarini birlashtirdi.                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Davomi
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+        </ol>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- department section -->
+
+  <section class="department_section layout_padding">
+    <div class="department_container" id="xizmatlar">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+              Bizning xizmatlar
+          </h2>
+          <p>
+            Tishlaringizga e'tibor bersangiz go'zal va sog'lom bo'ladi. Tabassum - bu sizga xos!
+
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="{% static 'home/images/s10.png'%}" alt="">
+                
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Gigiyena va profilaktika
+                </h5>
+                <p>
+                  Og'iz bo'shlig'i gigienasi tish salomatligini saqlash va oldini olishning ajralmas qismidir.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="{% static 'home/images/s11.png' %}" alt="">
+                
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Terapevtik stomatologiya
+
+                </h5>
+                <p>
+                  Klinikamizda terapevtik davolashning barcha turlari - kariyes, pulpit, periodontit.
+
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="{% static 'home/images/s12.png' %}" alt="">                
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Implantatsiya
+                </h5>
+                <p>
+                  Shifokorlarning implantatsiya sohasidagi kasbiy mahorati va tajribasi  har qanday implant tizimini o'rnatish imkonini beradi..
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="{% static 'home/images/s13.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ordontiya
+                </h5>
+                <p>
+                  Klinikamizda tajribali ortodontist faqat ijobiy natija va go'zal, sog'lom tabassum olishingiz uchun yordam beradi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-box">
+          <a href="">
+            Hammasi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end department section -->
+
+  <!-- about section -->
+
+  <section class="about_section layout_margin-bottom" id="biz_haqimizda">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+      
+            <img src="{% static 'home/images/about-img.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Biz <span>Haqimizda</span>
+              </h2>
+            </div>
+            <p>
+              Sizni  "ROHAT Dent" professional stomatologiya klinikamizda ko'rishdan xursandmiz. 5 yildan ortiq vaqt davomida biz har kuni o'z ishimiz bilan professional, ishonchli va hamyonbop bo'lishni, bemorlarimizga individual yondashish kerakligini isbotlab kelmoqdamiz. Bugungi kunda stomatologiya xavfsiz va og'riqsizdir. Klinikamiz o'z mijozlariga alohida munosabati bilan ajralib turadi.
+            </p>
+            <a href="">
+              Davomini ko'rish
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- doctor section -->
+
+  <section class="doctor_section layout_padding" id="shifokorlar">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Bizning shifokorlar
+        </h2>
+        <p class="col-md-10 mx-auto px-0">
+            Biz sizning ishonchingizni juda qadrlaymiz va sizga sog'lom va chiroyli tabassumni taqdim etishdan xursand
+            bo'lamiz!        </p>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+                
+              <img src="{% static 'home/images/d1.jpg' %}" alt="">
+            </div>
+            <div class="detail-box" >
+              <div class="social_box">
+                <a href="">
+                  <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+              
+              </div>
+              <h5>
+                Olima Olimova
+              </h5>
+              <h6 class="">
+                Stomatolog
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+                <img src="{% static 'home/images/d2.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="social_box">
+                <a href="">
+                  <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+              <h5>
+                Boburmirzo Umurzoqov
+              </h5>
+              <h6 class="">
+                Stomatolog
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+                <img src="{% static 'home/images/d3.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="social_box">
+                <a href="">
+                  <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+              <h5>
+                Soliha Solihova
+              </h5>
+              <h6 class="">
+                Stomatolog
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View All
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end doctor section -->
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding" id="kontakt">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Biz bilan bog'lanish
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container contact-form">
+            <form action="">
+              <div class="form-row">
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Ism" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Telefon raqam" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Xabar" />
+              </div>
+              <div class="btn_box">
+                <button type="button">
+                  YUBORISH
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div style="position:relative;overflow:hidden;"><a href="https://yandex.uz/maps/org/161888751114/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Rohat Dent Clinic</a><a href="https://yandex.uz/maps/10329/andijan/category/dental_clinics/184106132/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Стоматологическая клиника в Андижане</a><iframe src="https://yandex.uz/map-widget/v1/-/CCURBUwJTA" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+  <!-- client section -->
+
+  
+
+  <!-- end client section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 footer_col">
+          <div class="footer_contact">
+            <h4>
+              Qanday yetib borish..
+            </h4>
+            <div class="contact_link_box">
+              <a href="https://yandex.uz/maps/-/CCURBUwNwB">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Lokatsiya
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Telefon +99 229 22 40
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  xmirzo001@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="footer_social">
+            <a href="">
+              <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 footer_col">
+          <div class="footer_detail">
+            <h4>
+              Qisqacha
+            </h4>
+            <p>
+              Zamonaviy innovatsion jihozlar, stomatologiyadagi noyob ilg'or texnologiyalar, muntazam amaliyot o'taydigan malakali mutaxassislar, davolanishga individual yondashuv bemorlarimizning e'tirofi va mehrini qozonish imkonini berdi.            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-2 mx-auto footer_col">
+          <div class="footer_link_box">
+            <h4>
+              Linklar
+            </h4>
+            <div class="footer_links">
+              <a class="active" href="">
+                Bosh sahifa
+              </a>
+              <a class="" href="#biz_haqimizda">
+                Biz haqimizda
+              </a>
+              <a class="" href="#xizmatlar">
+                Xizmatlar
+              </a>
+              <a class="" href="#shifokorlar">
+                Shifokorlar
+              </a>
+              <a class="" href="#kontakt">
+                Bog'lanish
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 footer_col ">
+          <h4>
+            Obuna bo'lish
+          </h4>
+          <form action="#">
+            <input type="email" placeholder="emailingizni kiriting" />
+            <button type="submit">
+              Obuna bo'lish
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> ROHAT DENT
+          <a href="#"><br><br></a>
+            &copy; <span id="displayYear"></span> Sayt yaratuvchisi
+            <a href="https://www.linkedin.com/in/mirzo-uzakov-4b49701a2/">Mirzo Uzakov</a>
+        </p>
+       
+      </div>  
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script type="text/javascript" src="{% static 'home/js/jquery-3.4.1.min.js' %}"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="{% static 'home/js/bootstrap.js' %}"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="{% static 'home/js/custom.js' %}"></script>
+  <!-- Google Map -->
+  <!-- End Google Map -->
+
+</body>
+
+</html>
+{% endblock content %}

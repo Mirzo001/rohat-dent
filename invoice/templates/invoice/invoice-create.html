@@ -1,0 +1,231 @@
+{% extends "invoice/base.html" %}
+
+
+
+{% block content %}
+<style>
+    select {
+        padding: 70px;
+        
+        border-radius: 2px;
+      }
+</style>
+<br>
+<p class="title is-3 has-text-centered"><span class="material-icons-sharp">paid</span> Yangi to'lov qo'shish </p>
+
+<section class="hero is-fullheight">
+ 
+    <div class="container">
+        
+        <div class="card white-ter">
+            
+            <div class="hero-body">
+                
+                <form class="" method="POST" action="{% url 'invoice:invoice-create' %}">
+                    <p class="title is-6 is-spaced has-text-centered"><span class="material-icons-sharp">
+                        people_alt
+                        </span> Bemor:</p>
+                    {% csrf_token %}
+                   
+                    <div class="columns is-centered" >
+                        
+                           
+                         
+                            <div class="field is-medium">
+                                
+                                <select id="patient" name="patient" >
+                                   
+                                    <option selected disabled="true">---------</option>
+                                    {% for pat in patients %}
+        
+                                    <option value="{{pat.id}}">{{ pat.name }}</option>
+                                    {% endfor %}
+                                </select>
+                              </div>
+
+                       
+                    </div>  
+                        <input type="hidden" name="doctor" value="{{ request.user.id }}">
+
+                        
+                 
+                    <div class="columns is-centered">
+                       
+                        <div class="column is-one-third">
+                            
+                          <input class="input" type="hidden" name="date">
+                            
+                        </div>
+                       <br>
+                    </div>
+
+
+                    <table class="table is-fullwidth is-bordered is-hoverable is-striped">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>XIZMAT</th>
+                                    <th>SONI</th>
+                                    <th>NARXI</th>
+                                    <th>SUMMA</th>
+                                    <th>BOSHQA</th>
+                                </tr>
+                                {{ formset.management_form }}
+                                {% for form in formset %}
+                                <tr>
+                                    <td>{{form.service}}</td>
+                                    <td>{{form.quantity}}</td>
+                                    <td>{{form.rate}}</td>
+                                    <td class="amount"></td>
+                                    <td>
+                                        <div class="input-group-append">
+                                            <button
+                                                class="button is-small btn btn-success add-form-row">+</button>&nbsp;
+                                            <!-- <button class="button is-small btn btn-warning remove-form-row">-</button> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </thead>
+                        </tbody>
+
+                    </table>
+                    <div class="row spacer">
+                        <div class="buttons is-centered">
+                            
+                            <button type="submit" class="buttons is-centered button btn btn-block is-info is-half "><span class="material-icons-sharp">add_box</span>Qo'shish </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="columns">
+                        <div class="column">
+                            <h3 class="title is-4">Umumiy(so'm): <span id="total"></span></h3>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="buttons is-centered" style="margin-top: 15px;">
+            
+            <a href="{% url 'invoice:invoice-list' %}">
+            <button class="button is-danger"><span class="material-icons-sharp">
+                arrow_back_ios
+                </span>Ortga Qaytish</button>
+          </div>
+            </a>
+    </div>
+    
+</section>
+
+
+{% endblock %}
+
+{% block custom_js %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<script>
+    $(document).ready(function()
+    {
+      $('#patient').select2({
+        minimumInputLength: 1,
+        theme: "classic",
+        language: { inputTooShort: function () { return 'Bemor ismining 1-harfini kiriting'; } },
+
+        
+      });
+    });
+  </script>
+<script type="text/javascript">
+    $('table input').on("input", function () {
+        var total = []
+        var $tr = $(this).closest('tr');
+        var textValue1 = $("input.rate", $tr).val();
+        var textValue2 = $('input.quantity', $tr).val();
+        amt = textValue1 * textValue2;
+        // console.log(amt);
+        $('.amount', $tr).html(amt);
+        calc_total();
+    });
+
+    function calc_total() {
+        var sum = 0;
+        $(".amount").each(function () {
+            sum += parseFloat($(this).text());
+        });
+        console.log(sum);
+        $('#total').text(sum);
+    }
+</script>
+
+
+<script type="text/javascript">
+    function updateElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        console.log(newElement);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function () {
+            var name = $(this).attr('name')
+            if (name) {
+                name = name.replace('-' + (total - 1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({ 'name': name, 'id': id }).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function () {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+                forValue = forValue.replace('-' + (total - 1) + '-', '-' + total + '-');
+                $(this).attr({ 'for': forValue });
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        // $("div.form-row.button.is-primary").not(":last").hide();
+        // var conditionRow = $('.form-row:not(:last)');
+        // conditionRow.find('.button.is-primary')
+        // .hide();
+        // .removeClass('btn-success').addClass('btn-danger')
+        // .removeClass('add-form-row').addClass('remove-form-row')
+        // .html('-');
+        return false;
+    }
+    function deleteForm(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1) {
+            btn.closest('.form-row').remove();
+            var forms = $('.form-row');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i = 0, formCount = forms.length; i < formCount; i++) {
+                $(forms.get(i)).find(':input').each(function () {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row', function (e) {
+        e.preventDefault();
+        cloneMore('table tr:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row', function (e) {
+        e.preventDefault();
+        deleteForm('form', $(this));
+        return false;
+    });
+
+</script>
+{% endblock %}

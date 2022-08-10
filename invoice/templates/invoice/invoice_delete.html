@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="display-6 text-center"> <i class="fa-solid fa-calendar-xmark"></i> Qabulni o'chirish</h1>
+
+<div class="d-flex justify-content-center">
+    <div class="col-auto">
+
+        <form action="" method="post">{% csrf_token %}
+            <br>
+            <p class="fs-4">"{{invoice.patient}}" ismli bemorning <strong>{{invoice.date}}</strong> vaqtidagi <strong>{{invoice.total_amount}}</strong> so'mlik chekni o'chirishni istaysizmi?</p>
+            <button class="btn btn-danger ml-2 mx-auto d-block" type="submit">Ha</button>
+
+            <div class="d-flex justify-content-center mt-2"><a href="{% url 'invoice:invoice-list' %}" class="btn btn-secondary" role="button">Yo'q</a></div>
+        </form>
+
+    </div>
+</div>
+{% endblock content %}

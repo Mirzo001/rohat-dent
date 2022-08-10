@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}Shifokor Sahifasi{% endblock %}
+
+{% block content %}
+
+    <div class="image d-flex flex-column justify-content-center align-items-center m-5 p-5">
+        
+            <img class="profile-pic" style="width: 200px;height: 200px;border-radius: 50%;" src="{{ user.profile_picture.url }}" alt="Profile Picture">
+        
+        <br>
+        <h5><span class="name mt-3">{{ user.first_name }} {{ user.last_name }}</span></h5>
+        
+        <span class="idd">{{ user.position }}</span>
+        <div class=" d-flex mt-2"><a class="btn btn-dark" href="{% url 'change' user.pk %}">Akkauntni o'zgartirish</a></div>
+        <div class=" px-2 rounded mt-4 date "><span class="join">Qo'shilgan {{user.date_joined | date:"M d, Y"}}</span></div>   
+    </div>
+
+    {% comment %} <img class="profile-pic" src="" alt="Profile Picture" >
+
+    <div><a href="">edit profile</a></div>
+    
+    <p>Username: {{ user.username }}</p>
+    <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p> {% endcomment %}
+
+{% endblock %}

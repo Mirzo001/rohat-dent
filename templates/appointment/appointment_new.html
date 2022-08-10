@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+{% if user.is_superuser %}
+    
+
+<div class="d-flex justify-content-center m-5 p-5">
+    <div class="col-auto">
+        <h1>Yangi Qabul</h1>
+        <form method="post" action="{% url 'appointment_new' %}">
+
+            
+            {% csrf_token %}
+            
+            {% comment %}
+            <p>enter:</p>
+            <input type="text" name="patient" list="patientlist" placeholder="Patient..." class="form-control" style="width: 300px;">
+            <datalist id="patientlist">
+                {% for pat in patients %}
+                  <option value="{{ pat.name }}">
+                {% endfor %}
+
+            </datalist>
+                <br>      
+            {% endcomment %}
+                
+                
+            {{ form|crispy }}
+            
+           
+              
+            <input type="hidden" name="doctor" value="{{ request.user.id }}">
+            <button class="btn btn-success ml-2" type="submit">Saqlash</button>
+        </form>
+        <br>
+    </div>
+</div>
+{% endif %}
+    
+{% endblock content %}

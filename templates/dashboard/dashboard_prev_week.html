@@ -1,0 +1,81 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<main>
+  <h1>Dashboard</h1>
+  {% comment %}
+  <div class="data">
+    <input type="date" />
+  </div>
+  {% endcomment %}
+
+
+  <!-- END OF INSIGHTS -->
+
+  <div class="middle">
+    <div class="recent-orders">
+    
+
+      
+      {% comment %}
+      <div class="wrapper">
+        <form method="get">
+        <div class="search_box">
+          <button class="search_btn"><i class="material-icons-sharp">person_search</i></button>
+          <input type="text" id="tags" name="q" class="input_search" placeholder="Bemorlar">
+          
+        </form>
+        </div>
+      </div>
+      {% endcomment %}
+
+      <div class="wrapper">
+        <div class="search_box">
+          <form 
+          hx-get="{% url 'dashboard_prev_search' %}" 
+          hx-target="#week" 
+          hx-trigger="submit, input delay:0.3s">
+    
+          <input type="text" name="search" class="input_search" placeholder="Qidirish..." value="{{ search }}">
+          </form>
+         </div>
+      </div>
+      
+  
+
+      <div class="date button-group"> 
+        <button class="button" type="button"><a href="{% url 'dashboard' %}">Kun</button></a> 
+       <button class="button" type="button"> <a href="{% url 'dashboard_week' %}">Hafta</button></a> 
+         </div>
+         <div class="date button-group"> 
+          <button class="button" type="button"><a href="{% url 'dashboard_prev_week' %}"><i class="fa-solid fa-angles-left"></i></button></a> 
+         <button class="button" type="button"> <a href="{% url 'dashboard_week' %}"><i class="fa-solid fa-angles-right"></i></button></a> 
+           </div>
+      
+         <div id="week">
+          {% include "dashboard/dashboard_next_search.html" %}
+          </div>
+         
+
+      
+    </div>
+  </div>
+</main>
+<script type="text/javascript" src="{% static 'js/htmx.min.js' %}"></script>
+<script>
+  document.body.addEventListener('htmx:configRequest', (event) => {
+    event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  })
+</script>
+
+{% endblock content %}
+
+
+</body>
+
+</html>

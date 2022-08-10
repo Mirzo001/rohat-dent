@@ -1,0 +1,35 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>
+        List View
+    </title>
+    <meta charset="utf-8">
+    
+</head>
+<body>
+    <main  class="ui container">
+        <h1 class="ui header center aligned">List View</h1>
+        <form 
+            class="centred ui form"
+            hx-get="{% url 'search' %}" 
+            hx-target="#search-results"
+            
+            hx-trigger="submit, input delay:0.3s"
+        >
+            <input type="text" name="search" placeholder="Search..." value="{{ search }}">
+        </form>
+        <div id="search-results">
+            {% include 'search_results.html' %}
+        </div>
+        
+    </main>
+   
+    <script type="text/javascript" src="{% static 'js/htmx.min.js' %}"></script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      })
+    </script>
+</body>
+</html>

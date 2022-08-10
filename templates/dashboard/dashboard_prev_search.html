@@ -1,0 +1,61 @@
+<table>
+    <thead>
+      <tr>
+            <th></th>
+          {% for k,v in dictweek.items %}
+            <th>{{v|date:"D, d/m"}}</th>
+          {% endfor %}
+      </tr>
+
+    </thead>
+    <tbody>
+      {% for t in time %}
+      <tr>
+        <td>{{ t.time|date:"H:i" }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% for k,v in dictweek.items %}
+        {% for app in appointment %}
+          {% if app.time|date:"H" == t.time|date:"H" %}
+            {% if app.date == v %}
+                <tr>
+                  <th></th>
+                  
+                 
+                  {% if k == 'dushanba' %} <td> <a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a> </td> {% else %} <td></td> {% endif %}
+                  {% if k == 'seshanba' %} <td> <a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a> </td> {% else %} <td></td> {% endif %}
+                  
+                  {% if k == 'chorshanba' %} <td> <a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a> </td> {% else %} <td></td> {% endif %}
+                 
+                  {% if k == 'payshanba' %} <td> <a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a>  </td> {% else %} <td></td> {% endif %}
+                 
+                  {% if k == 'juma' %} <td> <a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a>  </td> {% else %} <td></td> {% endif %}
+                 
+                  {% if k == 'shanba' %} <td> <a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a> </td> {% else %} <td></td> {% endif %}
+                 
+                  {% if k == 'yakshanba' %} <td><a href="{% url 'appointment_detail' app.pk  %}">{{ app.patient }}</a>  </td> {% else %} <td></td> {% endif %}
+                 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+
+          {% endif %}
+            {% endif %}
+                {%endfor%}
+                  {%endfor%}
+                   {% endfor %}
+
+                
+
+    </tbody>
+  </table>

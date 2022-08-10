@@ -1,0 +1,79 @@
+<table class="table is-fullwidth is-bordered is-hoverable is-striped">
+    <tbody>
+        <thead>
+            <tr>
+                <th></th>
+                <th>RAQAMI</th>
+                <th>BEMOR</th>
+                <th>SANA</th>
+                
+                
+                <th>QAYDLAR</th>
+                <th>STATUS</th>
+                <th>SHIFOKOR</th>
+                <th>KO'RISH</th>
+                
+
+            </tr>
+        </thead>
+        {% for app in page_obj %}
+        <tr>
+            
+            <td><input class="checkbox" type="checkbox" value="{{app.id}}"  name="app_id" size="2" />
+            </td>
+            <td width="1%">#{{app.id}}</td>
+            <td width="9%"><a href="{% url 'appointment_detail' app.pk  %}">{{app.patient}}</a></td>
+            <td> {{app.date}}, {{app.time}}</td>
+           
+           
+            <td>{{app.qaydlar}}</td>
+            <td>
+                {% if app.status == "Yakunlandi" %}
+                <a class="button is-small is-success" href="">Yakunlandi</a>
+                {% elif app.status == "Kutilmoqda" %}
+                <a class="button is-small is-warning" href="">Kutilmoqda</a>
+                {% elif app.status == "Bekor qilindi" %}
+                <a class="button is-small is-danger" href="">Bekor qilindi</a>
+                {% endif %}
+                
+            </td>
+            <td>{{app.doctor}}</td>
+            <td width="10%"><a href="{% url 'appointment_detail' app.pk  %}">
+                <div class="button is-small is-info"><span class="material-icons-outlined">
+                    visibility
+                    </span></div>
+                
+            </a>
+            <a href="{% url 'appointment_edit' app.id %}">
+                <div class="button is-small is-warning"><span class="material-icons-outlined">
+                    edit
+                    </span></div>
+                
+            </a>
+        </td>
+            
+          
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <button class="button is-rounded"> <a href="?page=1">&laquo; boshi</button></a>
+            <button class="button is-rounded"> <a href="?page={{ page_obj.previous_page_number }}">⏮️oldingi</button></a>
+        {% endif %}
+
+        <span class="current tag is-light is-medium">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <button class="button is-rounded"> <a href="?page={{ page_obj.next_page_number }}">keyingi⏭️</button></a>
+           
+
+        <button class="button is-rounded">   <a href="?page={{ page_obj.paginator.num_pages }}">oxirgi &raquo;</button> </a>
+        {% endif %}
+    </span>
+</div>

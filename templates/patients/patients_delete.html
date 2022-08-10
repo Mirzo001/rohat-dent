@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center m-5 p-5">
+    <div class="col-auto">
+        <h1 class="display-6 text-center"> <i class="fa-solid fa-user-minus"></i> Bemorni o'chirish</h1>
+        <form action="" method="post">{% csrf_token %}
+            <p class="fs-4">"{{ patient }}" ismli bemorni o'chirishni istaysizmi?</p>
+            <button class="btn btn-danger ml-2 mx-auto d-block" type="submit">Ha</button>
+            <div class="d-flex justify-content-center mt-2"><a href="{% url 'patients' %}" class="btn btn-secondary" role="button">Yo'q</a></div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

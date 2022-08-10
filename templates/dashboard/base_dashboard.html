@@ -1,0 +1,157 @@
+{% load static %}
+{% url 'dashboard' as dashboard_url %}
+{% url 'dashboard_week' as dashboard_week_url %}
+{% url 'dashboard_next_week' as dashboard_nw_url %}
+{% url 'dashboard_prev_week' as dashboard_pw_url %}
+
+{% url 'patients' as patients_url %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Default CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  <!-- ASIDE CSS -->
+  <link rel="stylesheet" href="{% static 'css/aside.css' %}" />
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="{% static 'css/main1.css' %}" />
+
+  <!-- RIGHT SIDE CSS -->
+  <link rel="stylesheet" href="{% static 'css/right-side.css' %}" />
+
+  <!-- MEDIA CSS -->
+  <link rel="stylesheet" href="{% static 'css/media.css' %}" />
+
+  <!-- ICONS -->
+  <link href="{% static 'iconfont/material-icons.css' %}" rel="stylesheet" />
+
+  <link href="{% static 'fontawesome/fontawesome/css/all.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  
+
+
+  <title>{% block title %}ROHAT DENT {% endblock title %}</title>
+  <link rel="shortcut icon" href="/media/logo.png">
+  
+</head>
+
+<body>
+  <div class="container">
+    <aside>
+      <a href="{% url 'home' %}">
+        <div class="top">
+          <div class="logo">
+            <img src="/media/logo.png" alt="logo" />
+            <h2>ROHAT <span class="danger">DENT</span></h2>
+            
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp">close</span>
+          </div>
+        </div>
+      </a>
+      <div class="sidebar">
+        <a href="{{ dashboard_url }}" 
+        class="{%if request.path == dashboard_url%}active
+                {%elif request.path == dashboard_week_url %}active
+                {%elif request.path == dashboard_nw_url %}active
+                {%elif request.path == dashboard_pw_url %}active
+                {% endif %}">
+          <span class="material-icons-sharp">dashboard_customize</span>
+          <h3>Qabul</h3>
+          <span class="message-count">24</span>
+        </a>
+        <a href="{{ patients_url }}" class="{% if request.path == patients_url %}active{% endif %}">
+          <span class="material-icons-sharp">person_outline</span>
+          <h3>Bemorlar</h3>
+        </a>
+        <a href="{% url 'appointment_new' %}">
+          <span class="material-icons-sharp">add</span>
+          <h3>Qabul Qo'shish</shish>
+            
+          </h3>
+        </a>
+        <a href="{% url 'patients_new' %}">
+          <span class="material-icons-sharp">person_add</span>
+          <h3>Bemor Qo'shish
+          </h3>
+        </a>
+        <a href="{% url 'invoice:invoice-list' %}">
+          <span class="material-icons-sharp">payments</span>
+          <h3>To'lovlar</h3>
+        </a>
+        <a href="{% url 'invoice:invoice-create' %}">
+          <span class="material-icons-sharp">edit_note</span>
+          <h3>To'lov Qo'shish</h3>
+        </a>
+        <a href="{% url 'app-full-list' %}">
+          <span class="material-icons-sharp">format_list_numbered</span>
+          <h3>Qabul ro'yxati</h3>
+        </a>
+
+        
+        <a href="">
+          <i class="fa-solid fa-tooth"></i>
+          <h3>ROHAT DENT</h3>
+        </a>
+
+      </div>
+    </aside>
+
+    <!-- ---------------- END OF ASIDE ------------------------ -->
+
+
+    {% block content %}
+    {% endblock content %}
+    <div class="right">
+      <div class="top">
+        <button class="" id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+        {% comment %}
+        <div class="theme-toggler">
+          <span class="material-icons-sharp active">light_mode</span>
+          <span class="material-icons-sharp">dark_mode</span>
+        </div>
+        {% endcomment %}
+        
+    
+        <div class="profile">
+          <div class="info">
+            <p><b>{{user.first_name}} {{user.last_name}}</b></p>
+            <small class="text-muted">Doktor</small>
+          </div>
+    
+          <div class="profile-photo">
+            <a href="{% url 'doctor_profile' %}"><img src="{{ user.profile_picture.url }}" alt="profile" /></a>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+  
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+      $( function() {
+
+      $( "#tags" ).autocomplete({
+        source: "{% url 'autosuggest' %}",
+      });
+      });
+
+    </script>
+</body>
+
+</html>

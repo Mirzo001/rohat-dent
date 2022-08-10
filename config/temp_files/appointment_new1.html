@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="features">
+<h1>Qabul qo'shish</h1>
+    <form method="post" action="{% url 'appointment_new' %}">
+        {% csrf_token %}
+        <input type="hidden" name="doctor" value="{{ request.user.id }}" >
+
+        <input type="text"  list="citylist" name="patient" placeholder="Patient" class="form-control"> 
+        <datalist id="citylist">
+            {% for pat in patients %}
+            <option value="{{ pat }}">
+                
+            {% endfor %}
+            </datalist><br>
+       
+           <br>
+           <input type="text" list="statuslist" class="form-control" name="status" id="status_id" placeholder="Status">
+           <datalist id="statuslist">
+           
+            <option value="{{ form.status }}"></option>
+           
+            </datalist><br>
+            
+            <br>
+        <textarea class="form-control" placeholder="Qaydlar" name="qaydlar"></textarea><br>
+        <input type="date" class="form-control" name="date"><br>
+        <input type="time" class="form-control" name="time"><br>
+        
+        <button class="btn btn-success" type="submit">Qo'shish</button>
+    </form>
+</div>
+
+
+
+{% endblock content %}

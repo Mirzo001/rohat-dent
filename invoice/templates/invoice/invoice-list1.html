@@ -1,0 +1,77 @@
+<table class="table is-fullwidth is-bordered is-hoverable is-striped">
+    <tbody>
+        <thead>
+            <tr>
+                <th></th>
+                <th>RAQAMI</th>
+                <th>BEMOR</th>
+                <th>SANA</th>
+                
+                
+                <th>SUMMA</th>
+                <th>STATUS</th>
+                <th>SHIFOKOR</th>
+                <th>KO'RISH</th>
+                
+
+            </tr>
+        </thead>
+        {% for invoice in page_obj %}
+        <tr>
+            
+            <td><input class="checkbox" type="checkbox" value="{{invoice.id}}"  name="invoice_id" size="2" />
+            </td>
+            <td width="1%">#{{invoice.id}}</td>
+            <td width="9%">{{invoice.patient}}</td>
+            <td> {{invoice.date}}</td>
+           
+           
+            <td>{{invoice.total_amount}}</td>
+            <td>
+                {% if invoice.get_status %}
+                <a class="button is-small is-success" href="#">To'langan</a>
+                {% else %}
+                <a class="button is-small is-warning" href="#">To'lanmagan</a>
+                {% endif %}
+                
+            </td>
+            <td>{{invoice.doctor}}</td>
+            <td width="10%"><a href="{% url 'invoice:invoice-detail' id=invoice.id %}">
+                <div class="button is-small is-info"><span class="material-icons-outlined">
+                    visibility
+                    </span></div>
+                
+            </a>
+            <a href="{% url 'invoice:invoice-delete' invoice.id %}">
+                <div class="button is-small is-danger"><span class="material-icons-outlined">
+                    delete
+                    </span></div>
+                
+            </a>
+        </td>
+            
+          
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <button class="button is-rounded"> <a href="?page=1">&laquo; boshi</button></a>
+            <button class="button is-rounded"> <a href="?page={{ page_obj.previous_page_number }}">⏮️oldingi</button></a>
+        {% endif %}
+
+        <span class="current tag is-light is-medium">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <button class="button is-rounded"> <a href="?page={{ page_obj.next_page_number }}">keyingi⏭️</button></a>
+           
+
+        <button class="button is-rounded">   <a href="?page={{ page_obj.paginator.num_pages }}">oxirgi &raquo;</button> </a>
+        {% endif %}
+    </span>
+</div>
