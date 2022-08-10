@@ -30,7 +30,7 @@ class InvoiceListView(LoginRequiredMixin, View):
     def get(self, request):
         
         
-        invoices = Invoice.objects.filter(doctor=request.user)
+        invoices = Invoice.objects.filter(doctor=request.user).order_by('date')
         
         paginator = Paginator(invoices, 20)
         page_number = request.GET.get('page')
