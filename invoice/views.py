@@ -14,13 +14,13 @@ from django.urls import reverse_lazy
 
 def invoice_search(request):
     search = request.GET.get("search")
-    invoices = Invoice.objects.filter(doctor=request.user)
+    invoices = Invoice.objects.filter(doctor=request.user).order_by('date')
     paginator = Paginator(invoices, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
     if search:
-        page_obj = invoices.filter(patient__name__icontains=search)
+        page_obj = invoices.filter(patient__name__icontains=search).order_by('date')
         print(invoices)
 
     context = {"search": search, 'page_obj': page_obj}
