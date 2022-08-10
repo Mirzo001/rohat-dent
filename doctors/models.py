@@ -1,5 +1,4 @@
 
-from tkinter import DISABLED
 from django.db import models
 from django.utils import timezone
 
