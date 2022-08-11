@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['178.62.248.227','www.rohat-dent.uz','rohat-dent.uz']
+ALLOWED_HOSTS = ['*']
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
