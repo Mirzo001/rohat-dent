@@ -31,7 +31,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['167.99.213.89','localhost','rohat-dent.uz','www.rohat-dent.uz']
+ALLOWED_HOSTS = ['*']
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -165,7 +165,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 JAZZMIN_SETTINGS = {"show_ui_builder": True}
