@@ -33,7 +33,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://188.166.85.10", "https://www.rohat-dent.uz", "https://rohat-dent.uz"]
+CSRF_TRUSTED_ORIGINS = ["https://www.rohat-dent.uz", "https://rohat-dent.uz"]
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
