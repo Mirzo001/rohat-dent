@@ -37,11 +37,47 @@
         <td >{{ app.patient }}</td>
         <td>{{ app.patient.diagnoz }}</td>
         {% if app.status == "Kutilmoqda" %}
-        <td class="warning">{{ app.status }}</td>
+        <td>
+          <span style="text-transform: uppercase; background-color: #fff2d6; color:#ffab00; 
+          display: inline-block;
+          padding: 0.52em 0.593em;
+          font-size: 0.8125em;
+          font-weight: 500;
+          line-height: 1;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: baseline;
+          border-radius: 0.25rem;">{{ app.status }}
+        </span>
+      </td>
         {% elif app.status == "Yakunlandi" %}
-        <td class="success">{{ app.status }}</td>
+        <td>
+          <span style="text-transform: uppercase; background-color: #e8fadf; color:#71dd37; 
+          display: inline-block;
+          padding: 0.52em 0.593em;
+          font-size: 0.8125em;
+          font-weight: 500;
+          line-height: 1;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: baseline;
+          border-radius: 0.25rem;">{{ app.status }}
+        </span>  
+        </td>
         {% elif app.status == "Bekor qilindi" %}
-        <td class="danger">{{ app.status }}</td>
+        <td>
+          <span style="text-transform: uppercase; background-color: #ffc2c2; color:#ff3e1d; 
+          display: inline-block;
+          padding: 0.52em 0.593em;
+          font-size: 0.8125em;
+          font-weight: 500;
+          line-height: 1;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: baseline;
+          border-radius: 0.25rem;">{{ app.status }}
+        </span>  
+        </td>
         {% endif %}
         <td>  <form method="post" action="{% url 'status_edit' app.pk %}">{% csrf_token %}<select id="status" style="background-color:transparent; width: 30px;" name="status">
           <option selected>-🔽-</option>

@@ -221,17 +221,24 @@
 
       <label for="status">Status:</label>
       <select id="status" name="status">
-
-        <option value={{form.status}}  </option>
-
+        <option value="Yakunlandi">🟢 Yakunlandi</option>
+        <option value="Kutilmoqda" selected>🟡 Kutilmoqda</option>
+        <option value="Bekor qilindi">🔴 Bekor qilindi</option>
       </select>
 
 
       <label for="date">Sanasi:</label>
-      <p><input type="date" name="date" id=""></p>
-      <label for="date">Vaqti:</label>
-      <p><input type="time" name="time" id=""></p>
-
+      <p><input type="date" name="date" id="d"></p>
+          <script>
+            document.getElementById('d').value = new Date().toISOString().substring(0, 10);
+            </script>
+      <label for="time">Vaqti:</label>
+      <p><input type="time" name="time" id="t"></p>
+          <script>
+            var date = new Date();
+            var currentTime = date.getHours() + ':' + date.getMinutes();
+            document.getElementById('t').value = currentTime;
+          </script>
       <label for="bio">Qaydlar:</label>
       <textarea id="bio" name="qaydlar"></textarea>
 
