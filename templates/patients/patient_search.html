@@ -1,7 +1,7 @@
 <table>
     <thead>
       <tr>
-        <th>#</th>
+      
         <th><i class="fa-solid fa-teeth"></i> Bemor</th>
         <th><i class="fa-solid fa-stethoscope"></i> Diagnoz</th>
         <th><i class="fa-solid fa-phone"></i> Telefon</th>
@@ -10,11 +10,11 @@
 
       </tr>
     </thead>
-    <tbody>
-    
+      <tbody>
+      
       {% for patient in patients %}
       <tr>
-        <th></th>
+      
         <td><a href="{% url 'patients_detail' patient.pk  %}">{{ patient }}</a></td>
         <td>{{ patient.diagnoz }}</td>
         <td>{{ patient.phone }}</td>
