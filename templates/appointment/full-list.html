@@ -1,7 +1,12 @@
 {% extends 'invoice/base.html' %}
 
+{% block title %}
+<title>HAMMA QABUL</title>
+{% endblock title %}
+
 {% load static %}
 {% block content %}
+
 <div class="columns is-centered has-text-centered">
     <div class="column is-half">
         <div class="card has-background-white-ter">
@@ -9,70 +14,63 @@
         </div>
     </div>
 </div>
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">
-                <a href="{% url 'dashboard' %}"><span class="material-icons-sharp">grid_view</span></a> Dashboard /  <a href="{% url 'dashboard' %}"><span class="material-icons-sharp">people_alt</span> </a> Bemorlar
-            </p>
-            <p class="card-header-title">
-                Qabul ro'yxati / Qabul statusini o'zgartirish &nbsp;<button class="button is-rounded is-info">
-                    <a href="" class="has-text-white">Yangi qabul</a></button>
-                   
-            </p>
-            
-            <p class="card" >
-                <form style="margin-right: 12px;"
-              hx-get="{% url 'full-list-search' %}" 
-              hx-target="#content" 
-              hx-trigger="submit, input delay:0.3s">
-        
-              <input class="input is-rounded is-link" name="search" style="margin-top: 12px; align-items: center; display: flex; padding: .75rem 1rem; " type="text" placeholder="🔎Qidirish"  value="{{ search }}">
-              </form>
-            </p>
-        </header>
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            <a href="{% url 'dashboard' %}"><span class="material-icons-sharp">grid_view</span></a> Dashboard / <a
+                href="{% url 'dashboard' %}"><span class="material-icons-sharp">people_alt</span> </a> Bemorlar
+        </p>
+        <p class="card-header-title">
+            Qabul ro'yxati / Qabul statusini o'zgartirish &nbsp;<button class="button is-info">
+                <a href="" class="has-text-white">Yangi qabul</a></button>
 
-        
-        {% comment %}
-        
-      
-        {% endcomment %}
-            
-    
-        <form action="{% url 'app-full-list' %}" method="post">{% csrf_token %}
+        </p>
+    </header>
+
+    <span class="card-header-title  is-centered ">
+        <p class="control">
+        <form hx-get="{% url 'full-list-search' %}" hx-target="#content" hx-trigger="submit, input delay:0.3s">
+            <input class="input is-link" name="search" type="text" placeholder="🔎Qidirish">
+        </form>
+        </p>
+    </span>
+
+
+    <form action="{% url 'app-full-list' %}" method="post">{% csrf_token %}
         <div class="card-content">
             <div class="content" id="content">
                 {% include 'appointment/full-list-search.html' %}
             </div>
         </div>
-    
-    </div><br /><br /><br />
-    <div class="card has-background-white-ter">
-        <header class="card-header">
-            <p class="card-header-title">
-                Qabul statusini o'zgartirish
-            </p>
-        </header>
-      
-        <div class="card-content">
-            <div class="select is-rounded">
-                <select id="status" name="status">
-                    <option value="Yakunlandi">🟢 Yakunlandi </option>
-                    <option value="Kutilmoqda">🟡 Kutilmoqda</option>
-                    <option value="Bekor qilindi">🔴 Bekor qilindi</option>
-                </select>
-            </div>
-            <input class="button  is-info is-rounded" type="submit" class="btn" value="O'zgartirish" name="mybtn">
-            
-          
+
+</div><br /><br /><br />
+<div class="card has-background-white-ter">
+    <header class="card-header">
+        <p class="card-header-title">
+            Qabul statusini o'zgartirish
+        </p>
+    </header>
+
+    <div class="card-content">
+        <div class="select">
+            <select id="status" name="status">
+                <option value="Yakunlandi">🟢 Yakunlandi </option>
+                <option value="Kutilmoqda">🟡 Kutilmoqda</option>
+                <option value="Bekor qilindi">🔴 Bekor qilindi</option>
+            </select>
         </div>
-        
+        <input class="button is-info" type="submit" class="btn" value="O'zgartirish" name="mybtn">
+
+
     </div>
-</form> 
+
+</div>
+</form>
 
 <script type="text/javascript" src="{% static 'js/htmx.min.js' %}"></script>
 <script>
-  document.body.addEventListener('htmx:configRequest', (event) => {
-    event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-  })
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    })
 </script>
 {% endblock content %}
