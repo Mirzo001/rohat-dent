@@ -16,7 +16,7 @@
       <tr>
       
         <td><a href="{% url 'patients_detail' patient.pk  %}">{{ patient }}</a></td>
-        <td>{{ patient.diagnoz }}</td>
+        <td>{{ patient.diagnoz|truncatechars:150 }}</td>
         <td>{{ patient.phone }}</td>
         <td>{{ patient.address }}</td>
       

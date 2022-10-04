@@ -35,7 +35,7 @@
         <td><a href="{% url 'appointment_detail' app.pk  %}">{{ app.date |date:"D, d M, Y" }}</a></td>
         <td><a href="{% url 'appointment_detail' app.pk  %}">{{ app.time |date:"H:i" }}</a></td>
         <td >{{ app.patient }}</td>
-        <td>{{ app.patient.diagnoz }}</td>
+        <td>{{ app.patient.diagnoz|truncatechars:150 }}</td>
         {% if app.status == "Kutilmoqda" %}
         <td>
           <span style="text-transform: uppercase; background-color: #fff2d6; color:#ffab00; 
