@@ -11,35 +11,38 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-32cvchql&qedoi%3ub%j9#dgzro#@7f-rw7tlmy8&4_0&dmgc3'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ["https://www.rohat-dent.uz", "https://rohat-dent.uz"]
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Application definition
 
-
-
 INSTALLED_APPS = [
-    # 'dal',
-    # 'dal_select2',
-    # 'djangocms_admin_style',
+   
     # 'jazzmin',
-  
-    # 'admin_auto_filters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,8 +100,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'HOST': env('DB_HOST'),  
+        'PORT': 5432,
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD')
     }
 }
 
@@ -139,8 +146,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = "media-files"
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = "media-files"
 # MEDIA_ROOT = str(BASE_DIR.joinpath('media-files'))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -148,18 +155,22 @@ MEDIA_ROOT = "media-files"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+# STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
 JAZZMIN_SETTINGS = {"show_ui_builder": True}
 JAZZMIN_UI_TWEAKS = {
         "theme": "simplex",
