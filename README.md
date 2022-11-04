@@ -75,5 +75,7 @@ Fixing and improvement is on the process...
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Screenshot (8)](https://user-images.githubusercontent.com/60997768/199947490-3a5c7030-9d00-4bea-8049-0fb86bb1d5a4.png)
+![Screenshot (13)](https://user-images.githubusercontent.com/60997768/199947577-c3acd05f-1e98-4ad4-b977-476958d1ad8e.png)
+![Screenshot (14)](https://user-images.githubusercontent.com/60997768/199948057-0116e05a-5814-49c6-8d1e-285366dcbe40.png)
 
