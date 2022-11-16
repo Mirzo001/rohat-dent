@@ -73,6 +73,9 @@ If you have any feedback, please reach out to us at xmirzo001@gmail.com
 There might be errors during run this on your local machine. If so you can contact me to above email.
 Fixing and improvement is on the process...
 
+## Video demo
+https://www.linkedin.com/posts/mirzo-uzakov-4b49701a2_python-django-javascript-activity-6993985283662704641-psaR?utm_source=share&utm_medium=member_desktop
+
 ## Screenshots
 
 ![Screenshot (8)](https://user-images.githubusercontent.com/60997768/199947490-3a5c7030-9d00-4bea-8049-0fb86bb1d5a4.png)
